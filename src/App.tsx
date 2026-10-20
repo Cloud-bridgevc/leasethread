@@ -10,7 +10,7 @@ import * as O from './app/Others'
 
 const site: Record<string, () => JSX.Element> = {
   '/': P.Home, '/features': P.Features, '/demo': P.DemoPage, '/use-cases': P.UseCases, '/pricing': P.Pricing,
-  '/request-demo': P.RequestDemo, '/faq': P.FAQ, '/privacy': P.Privacy, '/security': P.Security, '/terms': P.Terms,
+  '/request-demo': P.RequestDemo, '/faq': P.FAQ, '/about': P.About, '/privacy': P.Privacy, '/security': P.Security, '/terms': P.Terms,
 }
 const app: Record<string, () => JSX.Element> = {
   '/app': Dashboard, '/app/properties': O.Properties, '/app/maintenance': Maintenance, '/app/leases': Leases,

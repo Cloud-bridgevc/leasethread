@@ -47,6 +47,7 @@ export function Home() {
         <p className="mb-6 mt-2 max-w-2xl">Paste a tenant request and see how LeaseThread classifies it.</p>
         <TriageWidget compact />
       </Wrap></section>
+      <Team />
       <section className="py-16"><Wrap narrow><div className="text-center"><h2 className="text-3xl font-bold">See it with your portfolio</h2><p className="mt-3">We'll walk through your lease and maintenance workflows in a 30-minute demo.</p><Link to="/request-demo" className="btn-primary mt-6">Request a demo</Link></div></Wrap></section>
     </>
   )
@@ -108,3 +109,16 @@ const Legal = ({ title, items }: { title: string; items: [string, string][] }) =
 export const Privacy = () => <Legal title="Privacy policy" items={[['Data we collect', 'Account details, property and lease records, uploaded documents, and maintenance communications provided by customers.'], ['How we use it', 'To provide the service, including AI analysis of your documents and requests. Customer data is not used to train shared models.'], ['Retention & deletion', 'Customers can request export and deletion. Retention periods to be finalized.'], ['Contact', 'privacy@example.com (placeholder)']]} />
 export const Security = () => <Legal title="Security" items={[['Server-side AI', 'All model calls occur in AWS Lambda via Amazon Bedrock. No keys or prompts are exposed to browsers.'], ['Encryption', 'Planned: TLS in transit; S3 and PostgreSQL encrypted at rest with KMS.'], ['Access control', 'Planned: organization-scoped, role-based access with property-level grants and audit logging.'], ['Monitoring', 'Planned: Amazon CloudWatch logs, metrics and alarms.'], ['Status', 'This prototype has not undergone a security audit or certification.']]} />
 export const Terms = () => <Legal title="Terms of service" items={[['Use of service', 'Customers are responsible for the accuracy of data and for reviewing AI output before acting on it.'], ['AI output', 'AI suggestions are advisory and may be incorrect. They are not legal advice or a substitute for professional judgment.'], ['Emergencies', 'LeaseThread is not an emergency service. Anyone in danger should contact local emergency services.'], ['Liability & termination', 'To be completed by counsel.']]} />
+
+const team = [['Bilal Segun', 'Founder & CEO'], ['Faiz Badmus', 'Co-Founder & CTO']]
+const initials = (n: string) => n.split(' ').map(x => x[0]).join('')
+export const Team = () => (
+  <section className="py-16"><Wrap>
+    <div className="text-xs font-bold uppercase tracking-widest text-teal-600">Our team</div>
+    <h2 className="mt-2 text-3xl font-bold">The people building LeaseThread</h2>
+    <div className="mt-8 grid max-w-2xl gap-5 sm:grid-cols-2">{team.map(([n, r]) => (
+      <div key={n} className="card flex items-center gap-4 p-5"><div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-navy-900 font-display text-lg font-bold text-teal-300" aria-hidden="true">{initials(n)}</div><div><h3 className="font-bold">{n}</h3><div className="text-sm text-slate-500">{r}</div></div></div>))}</div>
+  </Wrap></section>
+)
+export const About = () => (<><Hero eyebrow="About" title="About LeaseThread" sub="LeaseThread (leasethread.site) is building an AI-powered workspace that connects leases, maintenance requests, contractors and deadlines for property managers and residential landlords." /><Team />
+  <Wrap narrow><div className="pb-16 text-center"><Link to="/request-demo" className="btn-primary">Request a demo</Link> <a href="https://www.linkedin.com/company/leasethread/" target="_blank" rel="noopener noreferrer" className="btn-ghost">Follow on LinkedIn</a></div></Wrap></>)
