@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react'
 import { Link } from '../lib/router'
 import { Logo } from '../components/ui'
 
-const nav = [['/features', 'Features'], ['/demo', 'AI demo'], ['/use-cases', 'Use cases'], ['/pricing', 'Pricing'], ['/about', 'About'], ['/faq', 'FAQ']]
+const nav = [['/?s=problem', 'Problem'], ['/features', 'Features'], ['/demo', 'AI demo'], ['/use-cases', 'Use cases'], ['/pricing', 'Pricing'], ['/about', 'About'], ['/faq', 'FAQ']]
 export default function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false)
   return (
@@ -25,7 +25,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
           <div><h4 className="mb-2 text-sm font-semibold text-white">Company</h4><ul className="space-y-1 text-sm"><li><Link to="/about">About &amp; team</Link></li><li><Link to="/use-cases">Use cases</Link></li><li><Link to="/faq">FAQ</Link></li><li><Link to="/request-demo">Request a demo</Link></li></ul></div>
           <div><h4 className="mb-2 text-sm font-semibold text-white">Legal</h4><ul className="space-y-1 text-sm"><li><Link to="/privacy">Privacy</Link></li><li><Link to="/security">Security</Link></li><li><Link to="/terms">Terms</Link></li></ul></div>
         </div>
-        <div className="border-t border-white/10 py-4 text-center text-xs">© {new Date().getFullYear()} LeaseThread · leasethread.site (prototype). Legal pages are draft templates and require legal review before launch.</div>
+        <div className="border-t border-white/10 py-4 text-center text-xs">© {new Date().getFullYear()} LeaseThread · leasethread.site (prototype) · Founded by Bilal Segun (Founder/CEO) &amp; Faiz Badmus (Co-founder/CTO). Legal pages are draft templates and require legal review before launch.</div>
       </footer>
     </div>
   )

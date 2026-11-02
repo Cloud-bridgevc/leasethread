@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://leasethread.site/sitemap.xml

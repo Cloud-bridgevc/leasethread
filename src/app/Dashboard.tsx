@@ -21,8 +21,8 @@ export default function Dashboard() {
         <Stat label="Leases ≤ 90 days" value={s.leases.filter(l => daysUntil(l.end) <= 90).length} tone="warn" />
         <Stat label="Monthly rent roll" value={money(s.properties.reduce((a, p) => a + p.monthlyRent, 0))} />
       </div>
-      <div className="grid gap-5 lg:grid-cols-3">
-        <div className="space-y-5 lg:col-span-2">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
+        <div className="min-w-0 space-y-5 lg:col-span-2">
           <Section title="AI operational insights" action={<Pill className="bg-teal-100 text-teal-700 ring-teal-200">rule-based demo</Pill>}>
             <ul className="space-y-2 text-sm">{rep.summary.map((t, i) => <li key={i} className="flex gap-2"><span className="text-teal-600">◆</span>{t}</li>)}
               {risks[0] && <li className="flex gap-2"><span className="text-teal-600">◆</span>{risks.length} renewal flag{risks.length > 1 ? 's' : ''} need attention — soonest is {pName(s.leases.find(l => l.id === risks[0].leaseId)!.propertyId)} unit {s.leases.find(l => l.id === risks[0].leaseId)!.unit}.</li>}</ul>

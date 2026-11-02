@@ -2,6 +2,7 @@ import { useState, type FormEvent, type ReactNode } from 'react'
 import { Link } from '../lib/router'
 import { apiSubmitDemoRequest } from '../lib/api'
 import TriageWidget from './TriageWidget'
+import { GlowTop, GlowMid, GlowTeam } from '../components/Glow'
 
 const Wrap = ({ children, narrow = false }: { children: ReactNode; narrow?: boolean }) => <div className={`mx-auto px-4 ${narrow ? 'max-w-3xl' : 'max-w-6xl'}`}>{children}</div>
 const Hero = ({ eyebrow, title, sub }: { eyebrow: string; title: string; sub: string }) => (
@@ -38,10 +39,12 @@ export function Home() {
           </div>
         </Wrap>
       </section>
+      <GlowTop />
       <section className="py-16"><Wrap>
         <h2 className="text-3xl font-bold">One workspace, five AI capabilities</h2>
         <div className="mt-8 grid gap-5 md:grid-cols-3">{features.map(([t, d]) => <div key={t} className="card p-5"><div className="mb-3 h-1 w-8 rounded bg-teal-500" /><h3 className="font-bold">{t}</h3><p className="mt-2 text-sm">{d}</p></div>)}</div>
       </Wrap></section>
+      <GlowMid />
       <section className="bg-slate-50 py-16"><Wrap>
         <h2 className="text-3xl font-bold">Try the triage — right now</h2>
         <p className="mb-6 mt-2 max-w-2xl">Paste a tenant request and see how LeaseThread classifies it.</p>
@@ -110,15 +113,6 @@ export const Privacy = () => <Legal title="Privacy policy" items={[['Data we col
 export const Security = () => <Legal title="Security" items={[['Server-side AI', 'All model calls occur in AWS Lambda via Amazon Bedrock. No keys or prompts are exposed to browsers.'], ['Encryption', 'Planned: TLS in transit; S3 and PostgreSQL encrypted at rest with KMS.'], ['Access control', 'Planned: organization-scoped, role-based access with property-level grants and audit logging.'], ['Monitoring', 'Planned: Amazon CloudWatch logs, metrics and alarms.'], ['Status', 'This prototype has not undergone a security audit or certification.']]} />
 export const Terms = () => <Legal title="Terms of service" items={[['Use of service', 'Customers are responsible for the accuracy of data and for reviewing AI output before acting on it.'], ['AI output', 'AI suggestions are advisory and may be incorrect. They are not legal advice or a substitute for professional judgment.'], ['Emergencies', 'LeaseThread is not an emergency service. Anyone in danger should contact local emergency services.'], ['Liability & termination', 'To be completed by counsel.']]} />
 
-const team = [['Bilal Segun', 'Founder & CEO'], ['Faiz Badmus', 'Co-Founder & CTO']]
-const initials = (n: string) => n.split(' ').map(x => x[0]).join('')
-export const Team = () => (
-  <section className="py-16"><Wrap>
-    <div className="text-xs font-bold uppercase tracking-widest text-teal-600">Our team</div>
-    <h2 className="mt-2 text-3xl font-bold">The people building LeaseThread</h2>
-    <div className="mt-8 grid max-w-2xl gap-5 sm:grid-cols-2">{team.map(([n, r]) => (
-      <div key={n} className="card flex items-center gap-4 p-5"><div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-navy-900 font-display text-lg font-bold text-teal-300" aria-hidden="true">{initials(n)}</div><div><h3 className="font-bold">{n}</h3><div className="text-sm text-slate-500">{r}</div></div></div>))}</div>
-  </Wrap></section>
-)
+export const Team = () => <GlowTeam />
 export const About = () => (<><Hero eyebrow="About" title="About LeaseThread" sub="LeaseThread (leasethread.site) is building an AI-powered workspace that connects leases, maintenance requests, contractors and deadlines for property managers and residential landlords." /><Team />
   <Wrap narrow><div className="pb-16 text-center"><Link to="/request-demo" className="btn-primary">Request a demo</Link> <a href="https://www.linkedin.com/company/leasethread/" target="_blank" rel="noopener noreferrer" className="btn-ghost">Follow on LinkedIn</a></div></Wrap></>)

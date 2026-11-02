@@ -1,0 +1,21 @@
+{
+  "name": "LeaseThread",
+  "short_name": "LeaseThread",
+  "description": "AI-native property operations: leases, maintenance requests, contractors and deadlines in one workspace.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#177b75",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
