@@ -28,10 +28,10 @@ export default function Maintenance() {
       <Section title="Log a request with AI triage"><TriageWidget onResult={(text, r) => setLast({ text, r })} />
         {last && <div className="mt-3 flex flex-wrap items-end gap-3"><div><label className="label">Property</label><select className="input" value={pid} onChange={e => setPid(e.target.value)}>{s.properties.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}</select></div><div><label className="label">Unit</label><input className="input w-24" value={unit} onChange={e => setUnit(e.target.value)} /></div><button className="btn-accent" onClick={create}>Create request from triage</button></div>}
       </Section>
-      <div className="grid gap-5 lg:grid-cols-5">
-        <div className="card lg:col-span-3">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-5">
+        <div className="card min-w-0 lg:col-span-3">
           <div className="flex gap-2 border-b p-3">{(['open', 'all'] as const).map(f => <button key={f} onClick={() => setFilter(f)} className={`rounded-full px-3 py-1 text-xs font-semibold ${filter === f ? 'bg-navy-900 text-white' : 'bg-slate-100'}`}>{f === 'open' ? 'Open' : 'All'}</button>)}</div>
-          <div className="divide-y">{list.map(r => <button key={r.id} onClick={() => setSel(r.id)} className={`block w-full px-4 py-3 text-left hover:bg-slate-50 ${sel === r.id ? 'bg-teal-50' : ''}`}><div className="flex items-center justify-between gap-2"><span className="text-sm font-semibold text-navy-900">{s.properties.find(p => p.id === r.propertyId)?.name} · {r.unit}</span><span className="flex gap-1"><UrgencyBadge u={r.urgency} /><StatusBadge s={r.status} /></span></div><div className="mt-0.5 truncate text-sm text-slate-600">{r.text}</div></button>)}</div>
+          <div className="divide-y">{list.map(r => <button key={r.id} onClick={() => setSel(r.id)} className={`block w-full px-4 py-3 text-left hover:bg-slate-50 ${sel === r.id ? 'bg-teal-50' : ''}`}><div className="flex flex-wrap items-center justify-between gap-2"><span className="text-sm font-semibold text-navy-900">{s.properties.find(p => p.id === r.propertyId)?.name} · {r.unit}</span><span className="flex gap-1"><UrgencyBadge u={r.urgency} /><StatusBadge s={r.status} /></span></div><div className="mt-0.5 truncate text-sm text-slate-600">{r.text}</div></button>)}</div>
         </div>
         <div className="lg:col-span-2">
           {cur ? <Section title={`${cur.category} · ${cur.unit}`}>
